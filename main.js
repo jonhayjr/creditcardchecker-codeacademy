@@ -86,3 +86,33 @@ const findInvalidCards = arr => {
 }
 
 //console.log(findInvalidCards(batch));
+
+//Function to find invalid credit card companies
+const idInvalidCardCompanies = arr => {
+    //Create array to store unique, invalid card companies
+    const invalidCardCompanies = [];
+    
+    //Loop through each array of numbers.  Based on first digit, push credit card company to invalidCardCompanies array
+    arr.forEach(element => {
+        const firstDigit = element[0];
+        
+        //Check if first digit of card numbers is array is from specific CC company.  Only push number to invalidCardCompanies if it doesn't already exist 
+        
+        if (firstDigit === 3 && invalidCardCompanies.indexOf('Amex (American Express)') < 0) {
+            invalidCardCompanies.push('Amex (American Express)');
+        } else if (firstDigit === 4 && invalidCardCompanies.indexOf('Visa') < 0) {
+            invalidCardCompanies.push('Visa');
+        } else if (firstDigit === 5 && invalidCardCompanies.indexOf('Mastercard') < 0) {
+            invalidCardCompanies.push('Mastercard');
+        } else if (firstDigit === 6 && invalidCardCompanies.indexOf('Discover') < 0) {
+            invalidCardCompanies.push('Discover');
+        } else {
+            console.log('Company Not Found');
+        }
+    })
+    return invalidCardCompanies;
+}
+
+
+const invalidCardsTest = findInvalidCards(batch);
+console.log(idInvalidCardCompanies(invalidCardsTest));

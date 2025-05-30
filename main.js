@@ -57,7 +57,6 @@ const validateCred = array => {
         return accumulator += item;
     }, 0)
     
-    console.log(arraySum);
     
     //If sum divided by 10 has remainder of 0, then it's valid.  Otherwise, it's invalid.
     if (arraySum % 10 === 0) {
@@ -69,5 +68,21 @@ const validateCred = array => {
 
 //Number from sample logic
 const testArray = [4, 5, 3, 9, 6, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
+//console.log(validateCred(testArray));
 
-console.log(validateCred(testArray));
+//Function to loop through nested array and create new array of invalid values
+const findInvalidCards = arr => {
+    //Array to store invalid numbers
+    const invalidCards = [];
+    
+    //Loop through each array.  Use validateCred function to check if number is valid.  If it's invalid, push array to invalidCards array
+    arr.forEach(subArray => {
+        const isValid = validateCred(subArray) === 'Valid' ? true: false;
+        if (!isValid) {
+            invalidCards.push(subArray);
+        }
+    });
+    return invalidCards;
+}
+
+//console.log(findInvalidCards(batch));

@@ -24,6 +24,35 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
+const validateCred = array => {
+    //Reverse array order since we need to iterate array from left to right
+    const reversedArray = array.reverse();
+    
+    //Create array to store new values
+    let newArray = [];
+    
+    //Loop through reversed array
+    reversedArray.forEach((element, index) => {
+        //Since we are only doubling every other value check if index + 1 (need to add one since it's a zero-base index) value is even.
+        if ((index + 1) % 2 === 0) {
+            //Double number
+            let doubledNumber = element * 2;     
+            //If doubled number is greater than 9, subtract 9.
+            if (doubledNumber > 9) {
+                doubledNumber-=9;
+            }
+            //Push doubledNumber to new array
+            newArray.push(doubledNumber);
+        //For all other indexes, just push original value to new array
+        } else {
+            newArray.push(element);
+        }
+    })
+    
+    //Reverse array order
+    newArray = newArray.reverse();
+}
 
+const testArray = [4, 5, 3, 9, 6, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
 
-add 
+validateCred(testArray);

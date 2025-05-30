@@ -67,7 +67,7 @@ const validateCred = array => {
 }
 
 //Number from sample logic
-const testArray = [4, 5, 3, 9, 6, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
+//const testArray = [4, 5, 3, 9, 6, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
 //console.log(validateCred(testArray));
 
 //Function to loop through nested array and create new array of invalid values
@@ -114,5 +114,21 @@ const idInvalidCardCompanies = arr => {
 }
 
 
-const invalidCardsTest = findInvalidCards(batch);
-console.log(idInvalidCardCompanies(invalidCardsTest));
+/*const invalidCardsTest = findInvalidCards(batch);
+console.log(idInvalidCardCompanies(invalidCardsTest));*/
+
+//Function that converts string to array
+const convertStringToNumberArray = str => {
+    //String without commas and spaces
+    const stringsOnly = str.replaceAll(' ', '').replaceAll(',', '').replaceAll(', ', '');
+    
+    //Check if string only contains numbers.  If it doesn't, log error to console.  Otherwise, return array of numbers.
+    if (isNaN(Number(stringsOnly))) {
+        return 'String must only contain numbers!';
+    } 
+    
+    return stringsOnly.split('').map(Number);
+    
+}
+const sampleCCString = '4,5,3,9,6,7,7,9,0,8,0,1,6,8,0,8';
+console.log(convertStringToNumberArray(sampleCCString));

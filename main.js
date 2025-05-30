@@ -58,8 +58,16 @@ const validateCred = array => {
     }, 0)
     
     console.log(arraySum);
+    
+    //If sum divided by 10 has remainder of 0, then it's valid.  Otherwise, it's invalid.
+    if (arraySum % 10 === 0) {
+        return 'Valid';
+    } else {
+        return 'Invalid';
+    }
 }
 
+//Number from sample logic
 const testArray = [4, 5, 3, 9, 6, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
 
-validateCred(testArray);
+console.log(validateCred(testArray));

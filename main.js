@@ -29,7 +29,7 @@ const validateCred = array => {
     const reversedArray = array.reverse();
     
     //Create array to store new values
-    let newArray = [];
+    let processedDigits = [];
     
     //Loop through reversed array
     reversedArray.forEach((element, index) => {
@@ -42,28 +42,25 @@ const validateCred = array => {
                 doubledNumber-=9;
             }
             //Push doubledNumber to new array
-            newArray.push(doubledNumber);
+            processedDigits.push(doubledNumber);
         //For all other indexes, just push original value to new array
         } else {
-            newArray.push(element);
+            processedDigits.push(element);
         }
     })
     
     //Reverse array order
-    newArray = newArray.reverse();
+    processedDigits = processedDigits.reverse();
     
     //Sum of all numbers in array using reduce
-    const arraySum = newArray.reduce((accumulator, item) =>{
+    const arraySum = processedDigits.reduce((accumulator, item) =>{
         return accumulator += item;
     }, 0)
     
     
-    //If sum divided by 10 has remainder of 0, then it's valid.  Otherwise, it's invalid.
-    if (arraySum % 10 === 0) {
-        return 'Valid';
-    } else {
-        return 'Invalid';
-    }
+    //If sum divided by 10 has remainder of 0, then it's true.  Otherwise, it's false.
+    return arraySum % 10 === 0;
+ 
 }
 
 //Number from sample logic
@@ -77,7 +74,7 @@ const findInvalidCards = arr => {
     
     //Loop through each array.  Use validateCred function to check if number is valid.  If it's invalid, push array to invalidCards array
     arr.forEach(subArray => {
-        const isValid = validateCred(subArray) === 'Valid' ? true: false;
+        const isValid = validateCred(subArray);
         if (!isValid) {
             invalidCards.push(subArray);
         }

@@ -51,6 +51,13 @@ const validateCred = array => {
     
     //Reverse array order
     newArray = newArray.reverse();
+    
+    //Sum of all numbers in array using reduce
+    const arraySum = newArray.reduce((accumulator, item) =>{
+        return accumulator += item;
+    }, 0)
+    
+    console.log(arraySum);
 }
 
 const testArray = [4, 5, 3, 9, 6, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
